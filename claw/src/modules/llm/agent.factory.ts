@@ -1,5 +1,6 @@
 import { OllamaAdapter } from "./adapters/ollama.adapter";
 import { AgentService } from "./services/agents/agent.service";
+import { DatabaseService } from "./services/database/database.service";
 import { ToolRegistry } from "./services/tool-registry.service";
 import { internetSearchSkill } from "./skills/internet-search.skills";
 import { internetSpeedCheckSkill } from "./skills/internet-speed.skills";
@@ -39,5 +40,5 @@ export function createAgent() {
 
   const llm = new OllamaAdapter();
 
-  return new AgentService(llm, tools);
+  return new AgentService(llm, tools, new DatabaseService());
 }

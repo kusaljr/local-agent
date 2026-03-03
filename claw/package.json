@@ -6,6 +6,7 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/html": "^1.4.0",
     "@mozilla/readability": "^0.6.0",
     "@types/jsdom": "^28.0.0",
     "@types/qrcode-terminal": "^0.12.2",

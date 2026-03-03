@@ -21,8 +21,6 @@ export async function internetSearchSkill(args: {
     throw new Error("FIRECRAWL_API_KEY not set");
   }
 
-  const query = `${args.query} wikipedia`;
-
   const res = await fetch("https://api.firecrawl.dev/v2/search", {
     method: "POST",
     headers: {
@@ -30,7 +28,7 @@ export async function internetSearchSkill(args: {
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      query,
+      query: args.query,
       sources: ["news"],
       limit: args.limit ?? 5,
     }),

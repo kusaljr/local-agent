@@ -18,6 +18,7 @@ export class PlanningAgent {
     userInput: string,
     availableTools: { name: string; description: string }[]
   ): Promise<AgentPlan> {
+    console.log("Creating plan for user input:", userInput);
     const toolsDescription = availableTools
       .map((t) => `- ${t.name}: ${t.description}`)
       .join("\n");
@@ -77,20 +78,15 @@ Rules:
                 tool: { type: "string" },
                 arguments: {
                   type: "object",
-                  properties: {
-                    storeId: { type: "number" },
-                  },
-                  required: ["storeId"],
                   additionalProperties: true,
                 },
               },
               required: ["tool", "arguments"],
-              additionalProperties: false,
             },
           },
           finalAnswer: { type: "string" },
         },
-        required: ["needsTools"],
+        required: ["needsTools", "steps"],
         additionalProperties: false,
       },
     });
